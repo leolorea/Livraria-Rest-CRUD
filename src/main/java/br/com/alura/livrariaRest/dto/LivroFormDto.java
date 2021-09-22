@@ -20,7 +20,7 @@ import lombok.Setter;
 public class LivroFormDto {
 	
 	@NotBlank
-	@Size(max = 10)
+	@Size(min = 10)
 	private String titulo;
 	
 	@DateTimeFormat
