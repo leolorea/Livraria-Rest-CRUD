@@ -7,6 +7,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,6 +27,9 @@ public class AutorFormDto {
 	@PastOrPresent
 	@NotNull
 	private LocalDate dataNascimento;
+	
+	@JsonAlias("autor_id")
+	private Long autorId;
 	
 	@NotBlank
 	private String miniCurriculo;
