@@ -37,6 +37,7 @@ public class LivroController {
 	@PostMapping
 	public ResponseEntity<LivroDto> cadastarLivros(@RequestBody @Valid LivroFormDto dto, UriComponentsBuilder builder) {
 		LivroDto livroDto = service.cadastarLivro(dto);
+		
 		URI uri = builder.path("/livros/{id}").buildAndExpand(livroDto.getId()).toUri();
 		return ResponseEntity.created(uri).body(livroDto);
 		

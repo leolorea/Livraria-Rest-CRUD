@@ -34,6 +34,7 @@ public class LivroService {
 	@Transactional
 	public LivroDto cadastarLivro(LivroFormDto dto) {
 		Livro livro = modelMapper.map(dto, Livro.class);
+		livro.setId(null);
 		Livro livroSalvo = repository.save(livro);
 		
 	

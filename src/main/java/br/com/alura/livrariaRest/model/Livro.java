@@ -37,8 +37,9 @@ public class Livro {
 	private String titulo;
 	private LocalDate dataLancamento;
 	private BigDecimal numeroPaginas;
+	private Long autorId;
 	
-	@ManyToOne
-	private Autor autor;
-
+	
+	
+	
 }

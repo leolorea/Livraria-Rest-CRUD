@@ -16,18 +16,21 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="autor")
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "autor")
+
 public class Autor {
 
 	@Id
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
 	private String email;
 	private LocalDate dataNascimento;
 	private String miniCurriculo;
-
+	
+	
+	
 
 }

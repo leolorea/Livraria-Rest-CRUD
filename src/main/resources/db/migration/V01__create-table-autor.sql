@@ -4,4 +4,5 @@ CREATE TABLE autor (
   nome varchar(45) NOT NULL,
   email varchar(45) NOT NULL,
   mini_curriculo varchar(500) NOT NULL
+  
   )
