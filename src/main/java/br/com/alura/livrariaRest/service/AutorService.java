@@ -21,8 +21,6 @@ public class AutorService {
 	@Autowired
 	AutorRepository repository;
 
-
-
 	public Page<AutorDto> listarAutores(Pageable pageable) {
 		ModelMapper modelMapper = new ModelMapper();
 		Page<Autor> autores = repository.findAll(pageable);
@@ -33,19 +31,16 @@ public class AutorService {
 	@Transactional
 	public AutorDto cadastrarAutor(AutorFormDto formDto) {
 		ModelMapper modelMapper = new ModelMapper();
-		
-	
+
 		try {
-			
+
 			Autor autor = modelMapper.map(formDto, Autor.class);
 			Autor autorSalvado = repository.save(autor);
-			return modelMapper.map(autorSalvado,AutorDto.class);
-			
-			
+			return modelMapper.map(autorSalvado, AutorDto.class);
+
 		} catch (EntityNotFoundException e) {
 			throw new IllegalArgumentException("Usuario inexistente");
 		}
-		
 
 	}
 
@@ -64,10 +59,10 @@ public class AutorService {
 	@Transactional
 	public void deletarAutor(Long id) {
 
-			repository.deleteById(id);
+		repository.deleteById(id);
 
 	}
-	
+
 	public AutorDto listarAutor(Long id) {
 		ModelMapper modelMapper = new ModelMapper();
 		Autor autor = repository.findById(id).orElseThrow(() -> new EntityNotFoundException());

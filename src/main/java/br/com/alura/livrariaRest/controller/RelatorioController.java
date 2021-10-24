@@ -13,14 +13,13 @@ import br.com.alura.livrariaRest.service.RelatorioService;
 @RestController
 @RequestMapping("/relatorios")
 public class RelatorioController {
-	
+
 	@Autowired
 	private RelatorioService service;
-	
+
 	@GetMapping("/livros-publicados")
-	public List<RelatorioDto> relatorioLivros(){
+	public List<RelatorioDto> relatorioLivros() {
 		return service.getRelatorio();
 	}
-	
 
 }

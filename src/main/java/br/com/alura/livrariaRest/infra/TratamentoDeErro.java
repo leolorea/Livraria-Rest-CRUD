@@ -21,33 +21,26 @@ import br.com.alura.livrariaRest.dto.Erro500Dto;
 
 @RestControllerAdvice
 public class TratamentoDeErro {
-	
+
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
-	public List<Erro400Dto> tratarErro400(org.springframework.web.bind.MethodArgumentNotValidException ex){
-		return ex.getFieldErrors().stream().map(erro -> new Erro400Dto(erro.getField(), erro.getDefaultMessage())).collect(Collectors.toList());
-		
+	public List<Erro400Dto> tratarErro400(org.springframework.web.bind.MethodArgumentNotValidException ex) {
+		return ex.getFieldErrors().stream().map(erro -> new Erro400Dto(erro.getField(), erro.getDefaultMessage()))
+				.collect(Collectors.toList());
+
 	}
-	
-	@ExceptionHandler({EntityNotFoundException.class, EmptyResultDataAccessException.class})
+
+	@ExceptionHandler({ EntityNotFoundException.class, EmptyResultDataAccessException.class })
 	@ResponseStatus(code = HttpStatus.NOT_FOUND)
-	public void tratarErro404(){
-		
-		
+	public void tratarErro404() {
+
 	}
-	
+
 	@ExceptionHandler(Exception.class)
-	@ResponseStatus(code=HttpStatus.INTERNAL_SERVER_ERROR)
+	@ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
 	public Erro500Dto tratarErro500(Exception ex, HttpServletRequest req) {
-		return new Erro500Dto (
-				LocalDateTime.now(),
-				ex.getClass().toString(),
-				ex.getMessage(),
-				req.getRequestURI());
-		
-	}
-	
+		return new Erro500Dto(LocalDateTime.now(), ex.getClass().toString(), ex.getMessage(), req.getRequestURI());
 
 	}
 
-
+}

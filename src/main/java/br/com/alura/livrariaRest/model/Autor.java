@@ -26,6 +26,7 @@ public class Autor {
 	private Long id;
 	private String nome;
 	private String email;
+
 	public Autor(String nome, String email, LocalDate dataNascimento, String miniCurriculo) {
 		super();
 		this.nome = nome;
@@ -33,10 +34,8 @@ public class Autor {
 		this.dataNascimento = dataNascimento;
 		this.miniCurriculo = miniCurriculo;
 	}
+
 	private LocalDate dataNascimento;
 	private String miniCurriculo;
-	
-	
-	
 
 }

@@ -27,25 +27,24 @@ public class LivroService {
 
 	@Autowired
 	private LivroRepository repository;
-	
+
 	ModelMapper modelMapper = new ModelMapper();
 
 	public Page<LivroDto> listarLivros(Pageable pageable) {
-		 Page<Livro> livros = repository .findAll(pageable);
+		Page<Livro> livros = repository.findAll(pageable);
 
 		return livros.map(t -> modelMapper.map(t, LivroDto.class));
 	}
-	
+
 	@Transactional
 	public LivroDto cadastarLivro(LivroFormDto dto) {
 		Livro livro = modelMapper.map(dto, Livro.class);
 		livro.setId(null);
 		Livro livroSalvo = repository.save(livro);
-		
-	
+
 		return modelMapper.map(livroSalvo, LivroDto.class);
 	}
-	
+
 	public LivroDto listarLivros(Long id) {
 		Livro livro = repository.findById(id).orElseThrow(() -> new EntityNotFoundException());
 		LivroDto livroDto = modelMapper.map(livro, LivroDto.class);
@@ -55,10 +54,11 @@ public class LivroService {
 	@Transactional
 	public void deletarLivro(Long id) {
 		repository.deleteById(id);
-		
+
 	}
+
 	@Transactional
-	public LivroDto autalizarLivro( AtualizacaoLivroFormDto dto) {
+	public LivroDto autalizarLivro(AtualizacaoLivroFormDto dto) {
 		Livro livro = repository.getById(dto.getId());
 		livro.setDataLancamento(dto.getDataLancamento());
 		livro.setNumeroPaginas(dto.getNumeroPaginas());

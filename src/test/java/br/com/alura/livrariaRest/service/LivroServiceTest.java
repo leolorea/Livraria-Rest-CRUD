@@ -18,25 +18,22 @@ import br.com.alura.livrariaRest.repository.LivroRepository;
 
 @ExtendWith(MockitoExtension.class)
 class LivroServiceTest {
-    
+
 	@Mock
 	private LivroRepository repository;
-	
+
 	@InjectMocks
 	private LivroService service;
-	
+
 	@Test
 	void deveriaCadastrarLivro() {
 		Autor autor = new Autor("leo", "leo@leo", LocalDate.now(), "texxxxxxxxxxxxxxxxxxxxxto");
-	 LivroFormDto livro= new LivroFormDto("titulo", LocalDate.now(), new BigDecimal("340"), autor);
-	 
-	 LivroDto livroDto = service.cadastarLivro(livro);
-	 
-	 assertEquals(livro.getTitulo(), livroDto.getTitulo());
-	 
-	 
-	 
-	 
+		LivroFormDto livro = new LivroFormDto("titulo", LocalDate.now(), new BigDecimal("340"), autor);
+
+		LivroDto livroDto = service.cadastarLivro(livro);
+
+		assertEquals(livro.getTitulo(), livroDto.getTitulo());
+
 	}
 
 }

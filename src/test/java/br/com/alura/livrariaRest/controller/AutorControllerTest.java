@@ -20,38 +20,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import springfox.documentation.service.Header;
 
-
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
 @Transactional
 class AutorControllerTest {
-	
+
 	@Autowired
 	private MockMvc mvc;
 
 	@Test
 	void naoDeveriaCadastrarAutorComDadosIncompletos() throws Exception {
 		String json = "{}";
-		
-		mvc.perform(MockMvcRequestBuilders.post("/autores")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(json))		
-		.andExpect(MockMvcResultMatchers.status().isBadRequest());
+
+		mvc.perform(MockMvcRequestBuilders.post("/autores").contentType(MediaType.APPLICATION_JSON).content(json))
+				.andExpect(MockMvcResultMatchers.status().isBadRequest());
 	}
-	
+
 	@Test
 	void deveriaCadastrarAutorComDadosIncompletos() throws Exception {
 		String json = "{\"nome\" : \"leonarodffffffffffff\", \"email\" : \"leo@leo.com\","
 				+ " \"dataNascimento\" : \"2000-12-12\", \"miniCurriculo\" : \"George Raymond Richard Martin, nascido George Raymond Martin e mais\" }";
-		
-		mvc.perform(MockMvcRequestBuilders.post("/autores")
-				.contentType(MediaType.APPLICATION_JSON)
-				.content(json))		
-		.andExpect(MockMvcResultMatchers.status().isCreated())
-		.andExpect(MockMvcResultMatchers.header().exists("Location"))
-		.andExpect(MockMvcResultMatchers.content().json(json));
+
+		mvc.perform(MockMvcRequestBuilders.post("/autores").contentType(MediaType.APPLICATION_JSON).content(json))
+				.andExpect(MockMvcResultMatchers.status().isCreated())
+				.andExpect(MockMvcResultMatchers.header().exists("Location"))
+				.andExpect(MockMvcResultMatchers.content().json(json));
 	}
 
 }

@@ -9,8 +9,6 @@ import br.com.alura.livrariaRest.dto.AutorDto;
 import br.com.alura.livrariaRest.dto.RelatorioDto;
 import br.com.alura.livrariaRest.model.Autor;
 
-public interface AutorRepository extends JpaRepository<Autor, Long>{
-               
-	
+public interface AutorRepository extends JpaRepository<Autor, Long> {
 
 }

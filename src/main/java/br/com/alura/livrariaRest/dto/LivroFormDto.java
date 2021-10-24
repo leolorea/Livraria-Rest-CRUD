@@ -20,28 +20,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class LivroFormDto {
-	
+
 	@NotBlank
 	@Size(min = 10)
 	private String titulo;
-	
+
 	@DateTimeFormat
 	@PastOrPresent
 	@NotNull
 	private LocalDate dataLancamento;
-	
+
 	@Min(100)
 	private BigDecimal numeroPaginas;
-	
-	
-	private Autor autor;
-	
 
+	private Autor autor;
 
 }

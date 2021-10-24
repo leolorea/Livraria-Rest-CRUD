@@ -14,10 +14,9 @@ import lombok.Data;
 @AllArgsConstructor
 @Data
 public class RelatorioDto {
-	
+
 	private String autor;
 	private Long quantidadeLivros;
 	private Double percentual;
-	
 
 }

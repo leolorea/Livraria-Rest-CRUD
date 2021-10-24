@@ -28,45 +28,45 @@ import br.com.alura.livrariaRest.service.AutorService;
 @RestController
 @RequestMapping("/autores")
 public class AutorController {
-	
+
 	@Autowired
 	private AutorService service;
-	
+
 	@GetMapping
-	public Page<AutorDto> listarAutores(@PageableDefault(size=10) Pageable pageable){
+	public Page<AutorDto> listarAutores(@PageableDefault(size = 10) Pageable pageable) {
 		return service.listarAutores(pageable);
 	}
-	
+
 	@GetMapping("/{id}")
-	public ResponseEntity<AutorDto> listarAutor(@PathVariable Long id){
-		
+	public ResponseEntity<AutorDto> listarAutor(@PathVariable Long id) {
+
 		AutorDto autorDto = service.listarAutor(id);
 		return ResponseEntity.ok(autorDto);
 	}
-	
-	
+
 	@PostMapping
-	public ResponseEntity<AutorDto> cadastrarAutor(@RequestBody @Valid AutorFormDto dto, UriComponentsBuilder uriBuilder) {
+	public ResponseEntity<AutorDto> cadastrarAutor(@RequestBody @Valid AutorFormDto dto,
+			UriComponentsBuilder uriBuilder) {
 		AutorDto autorDto = service.cadastrarAutor(dto);
 		URI uri = uriBuilder.path("/autores/{id}").buildAndExpand(autorDto.getId()).toUri();
 		return ResponseEntity.created(uri).body(autorDto);
-		
+
 	}
-	
+
 	@PutMapping
 	public ResponseEntity<AutorDto> autalizarAutor(@RequestBody @Valid AtualizacaoAutorFormDto dto) {
 		AutorDto autorDto = service.atualizarAutor(dto);
-				
+
 		return ResponseEntity.ok(autorDto);
-		
+
 	}
-	
+
 	@DeleteMapping("/{id}")
 	public ResponseEntity deletarAutor(@PathVariable Long id) {
-		
+
 		service.deletarAutor(id);
-				
+
 		return ResponseEntity.noContent().build();
-		
+
 	}
 }

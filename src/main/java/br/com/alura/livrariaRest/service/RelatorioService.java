@@ -10,12 +10,11 @@ import br.com.alura.livrariaRest.repository.LivroRepository;
 
 @Service
 public class RelatorioService {
-	
+
 	@Autowired
 	private LivroRepository repository;
 	
-	
-	public List<RelatorioDto> getRelatorio(){
+	public List<RelatorioDto> getRelatorio() {
 		return repository.relatorioAutores();
 
 	}

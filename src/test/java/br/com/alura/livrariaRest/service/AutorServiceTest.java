@@ -16,27 +16,23 @@ import br.com.alura.livrariaRest.dto.AutorDto;
 import br.com.alura.livrariaRest.dto.AutorFormDto;
 import br.com.alura.livrariaRest.repository.AutorRepository;
 
-
 @ExtendWith(MockitoExtension.class)
 class AutorServiceTest {
 
 	@Mock
 	private AutorRepository repository;
-	
+
 	ModelMapper modelMapper = new ModelMapper();
-	
+
 	@InjectMocks
 	private AutorService service;
-
-
 
 	@Test
 	void deveriaCadastarAutor() {
 		AutorFormDto autor = new AutorFormDto("leo", "leo@gmail.com", LocalDate.now(), "autor muito conhecido");
-		
-		
+
 		AutorDto dto = service.cadastrarAutor(autor);
-		
+
 		Mockito.verify(repository).save(Mockito.any());
 
 		assertEquals(autor.getNome(), dto.getNome());

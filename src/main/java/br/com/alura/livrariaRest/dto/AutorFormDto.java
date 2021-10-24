@@ -14,31 +14,29 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class AutorFormDto {
-	
+
 	public AutorFormDto(String string, String string2, LocalDate now, String string3) {
 		// TODO Auto-generated constructor stub
 	}
 
 	@NotBlank
 	private String nome;
-	
+
 	@NotBlank
 	@Email
 	private String email;
-	
+
 	@PastOrPresent
-	
+
 	private LocalDate dataNascimento;
-	
-	
+
 	private Long id;
-	
+
 	@NotBlank
 	private String miniCurriculo;
 

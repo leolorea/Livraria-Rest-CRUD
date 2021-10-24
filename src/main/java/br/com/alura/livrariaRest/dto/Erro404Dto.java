@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class Erro404Dto {
-	
+
 	private String mensagem;
 	private String campo;
 	private String path;

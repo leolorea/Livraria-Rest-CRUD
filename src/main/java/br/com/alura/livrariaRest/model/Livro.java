@@ -36,7 +36,7 @@ public class Livro {
 	private String titulo;
 	private LocalDate dataLancamento;
 	private BigDecimal numeroPaginas;
-	
+
 	@ManyToOne
 	private Autor autor;
 
@@ -47,8 +47,5 @@ public class Livro {
 		this.numeroPaginas = numeroPaginas;
 		this.autor = autor;
 	}
-	
-	
-	
-	
+
 }

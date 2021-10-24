@@ -10,4 +10,5 @@ public class Erro400Dto {
 
 	private String mensagem;
 	private String campo;
+	
 }

@@ -12,5 +12,4 @@ public class LivrariaRestApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(LivrariaRestApplication.class, args);
 	}
-
 }

@@ -24,59 +24,45 @@ import br.com.alura.livrariaRest.dto.LivroDto;
 import br.com.alura.livrariaRest.dto.LivroFormDto;
 import br.com.alura.livrariaRest.service.LivroService;
 
-
 @RestController
 @RequestMapping("/livros")
 public class LivroController {
-	
+
 	@Autowired
 	private LivroService service;
-	
+
 	@GetMapping
-	public Page<LivroDto> listarLivros (@PageableDefault(size=10) Pageable pageable){
+	public Page<LivroDto> listarLivros(@PageableDefault(size = 10) Pageable pageable) {
 		return service.listarLivros(pageable);
 	}
-	
+
 	@GetMapping("/{id}")
-	public ResponseEntity<LivroDto> listarLivro (@PathVariable Long id) {
+	public ResponseEntity<LivroDto> listarLivro(@PathVariable Long id) {
 		LivroDto livroDto = service.listarLivros(id);
 		return ResponseEntity.ok(livroDto);
-		
+
 	}
-	
+
 	@PostMapping
 	public ResponseEntity<LivroDto> cadastarLivros(@RequestBody @Valid LivroFormDto dto, UriComponentsBuilder builder) {
 		LivroDto livroDto = service.cadastarLivro(dto);
-		
+
 		URI uri = builder.path("/livros/{id}").buildAndExpand(livroDto.getId()).toUri();
 		return ResponseEntity.created(uri).body(livroDto);
-		
+
 	}
-	
+
 	@DeleteMapping("/{id}")
 	public ResponseEntity deletarLivro(@PathVariable Long id) {
 		service.deletarLivro(id);
 		return ResponseEntity.noContent().build();
 	}
-	
-		@PutMapping
-		public ResponseEntity<LivroDto> atualizarLivro(@RequestBody @Valid AtualizacaoLivroFormDto dto) {
-			LivroDto livroDto = service.autalizarLivro(dto);
-		return	ResponseEntity.ok(livroDto);
-			
-			
-			
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+	@PutMapping
+	public ResponseEntity<LivroDto> atualizarLivro(@RequestBody @Valid AtualizacaoLivroFormDto dto) {
+		LivroDto livroDto = service.autalizarLivro(dto);
+		return ResponseEntity.ok(livroDto);
+
 	}
-	
 
-
+}
