@@ -28,7 +28,6 @@ import lombok.ToString;
 @Table(name = "livro")
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class Livro {
 
 	@Id
@@ -37,7 +36,17 @@ public class Livro {
 	private String titulo;
 	private LocalDate dataLancamento;
 	private BigDecimal numeroPaginas;
-	private Long autorId;
+	
+	@ManyToOne
+	private Autor autor;
+
+	public Livro(String titulo, LocalDate dataLancamento, BigDecimal numeroPaginas, Autor autor) {
+		super();
+		this.titulo = titulo;
+		this.dataLancamento = dataLancamento;
+		this.numeroPaginas = numeroPaginas;
+		this.autor = autor;
+	}
 	
 	
 	

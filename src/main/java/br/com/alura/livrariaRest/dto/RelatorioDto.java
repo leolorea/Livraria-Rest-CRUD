@@ -15,7 +15,7 @@ import lombok.Data;
 @Data
 public class RelatorioDto {
 	
-	private Long idAutor;
+	private String autor;
 	private Long quantidadeLivros;
 	private Double percentual;
 	

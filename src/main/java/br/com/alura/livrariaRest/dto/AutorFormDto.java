@@ -9,14 +9,22 @@ import javax.validation.constraints.PastOrPresent;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class AutorFormDto {
 	
+	public AutorFormDto(String string, String string2, LocalDate now, String string3) {
+		// TODO Auto-generated constructor stub
+	}
+
 	@NotBlank
 	private String nome;
 	
@@ -25,11 +33,11 @@ public class AutorFormDto {
 	private String email;
 	
 	@PastOrPresent
-	@NotNull
+	
 	private LocalDate dataNascimento;
 	
-	@JsonAlias("autor_id")
-	private Long autorId;
+	
+	private Long id;
 	
 	@NotBlank
 	private String miniCurriculo;

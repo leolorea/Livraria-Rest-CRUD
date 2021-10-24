@@ -19,7 +19,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "autor")
-
 public class Autor {
 
 	@Id
@@ -27,6 +26,13 @@ public class Autor {
 	private Long id;
 	private String nome;
 	private String email;
+	public Autor(String nome, String email, LocalDate dataNascimento, String miniCurriculo) {
+		super();
+		this.nome = nome;
+		this.email = email;
+		this.dataNascimento = dataNascimento;
+		this.miniCurriculo = miniCurriculo;
+	}
 	private LocalDate dataNascimento;
 	private String miniCurriculo;
 	
