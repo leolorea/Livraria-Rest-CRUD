@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -40,6 +41,14 @@ public class TratamentoDeErro {
 	@ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
 	public Erro500Dto tratarErro500(Exception ex, HttpServletRequest req) {
 		return new Erro500Dto(LocalDateTime.now(), ex.getClass().toString(), ex.getMessage(), req.getRequestURI());
+
+	}
+	
+
+	@ExceptionHandler(AccessDeniedException.class)
+	@ResponseStatus(code = HttpStatus.FORBIDDEN)
+	public String tratarErro403(AccessDeniedException e) {
+		return e.getMessage();
 
 	}
 

@@ -39,7 +39,7 @@ public class AutorService {
 			return modelMapper.map(autorSalvado, AutorDto.class);
 
 		} catch (EntityNotFoundException e) {
-			throw new IllegalArgumentException("Usuario inexistente");
+			throw new IllegalArgumentException("Usuário inexistente");
 		}
 
 	}
