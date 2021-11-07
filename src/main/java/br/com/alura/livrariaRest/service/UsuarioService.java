@@ -14,11 +14,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import br.com.alura.livrariaRest.dto.AtualizacaoUsuarioFormDto;
 import br.com.alura.livrariaRest.dto.UsuarioDto;
 import br.com.alura.livrariaRest.dto.UsuarioFormDto;
 import br.com.alura.livrariaRest.model.Perfil;
 import br.com.alura.livrariaRest.model.Usuario;
-import br.com.alura.livrariaRest.repository.PerfilRespository;
+import br.com.alura.livrariaRest.repository.PerfilRepository;
 import br.com.alura.livrariaRest.repository.UsuarioRepository;
 
 
@@ -32,7 +33,7 @@ public class UsuarioService {
 	private UsuarioRepository repository;
 	
 	@Autowired
-	private PerfilRespository perfilRepository;
+	private PerfilRepository perfilRepository;
 	
 	private ModelMapper mapper = new ModelMapper();
 
@@ -86,6 +87,16 @@ public class UsuarioService {
 		}
 		throw new EntityNotFoundException("Usuário Inexistente");
 
+	}
+
+	@Transactional
+	public UsuarioDto atualizarUsuario(AtualizacaoUsuarioFormDto formDto) {
+		
+		 Usuario usuario = repository.getById(formDto.getId());
+		 usuario.setSenha(formDto.getSenha());
+		 usuario.setUsername(formDto.getUsername());
+	       UsuarioDto dto = mapper.map(usuario, UsuarioDto.class);
+	        return dto;
 	}
 
 }

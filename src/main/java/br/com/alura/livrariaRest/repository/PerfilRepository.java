@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.alura.livrariaRest.model.Perfil;
 
-public interface PerfilRespository extends JpaRepository<Perfil, Long>{
+public interface PerfilRepository extends JpaRepository<Perfil, Long>{
 
 }

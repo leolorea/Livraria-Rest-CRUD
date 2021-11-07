@@ -18,6 +18,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import br.com.alura.livrariaRest.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 
+
+
 @Configuration
 public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 
@@ -64,7 +66,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring()
-		.antMatchers("/auth", "/v2/api-docs","/usuario","/configuration/ui","/swagger-ui","/spring-security-rest/api/v2/api-docs", "/swagger-resources/**", "/configuration/security", "/swagger-ui.html", "/webjars/**" );
+		.antMatchers( "/auth","/v2/api-docs","usuario","/configuration/ui","/swagger-ui","/spring-security-rest/api/v2/api-docs", "/swagger-resources/**", "/configuration/security", "/swagger-ui.html", "/webjars/**" );
 		super.configure(web);
 	}
 

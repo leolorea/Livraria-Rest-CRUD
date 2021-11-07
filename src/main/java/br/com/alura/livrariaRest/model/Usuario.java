@@ -92,4 +92,17 @@ public class Usuario implements UserDetails{
 		
 	}
 
+	public Usuario(String username, String senha) {
+		this.senha = senha;
+		this.username = username;
+	}
+
+	public void atualizarInfo(String username, String senha) {
+		this.senha = senha;
+		this.username = username;
+		
+	}
+
+	
+
 }
