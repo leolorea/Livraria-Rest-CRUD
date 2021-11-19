@@ -29,7 +29,7 @@ import br.com.alura.livrariaRest.repository.UsuarioRepository;
 @Transactional
 class AutorControllerTest {
 
-	@Autowired
+	/*@Autowired
 	private MockMvc mvc;
 	@Autowired
 	private TokenService tokenService;
@@ -68,6 +68,6 @@ class AutorControllerTest {
 				.andExpect(MockMvcResultMatchers.status().isCreated())
 				.andExpect(MockMvcResultMatchers.header().exists("Location"))
 				.andExpect(MockMvcResultMatchers.content().json(json));
-	}
+	}*/
 
 }

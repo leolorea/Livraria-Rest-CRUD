@@ -104,6 +104,7 @@
 	</dependencies>
 	
 	<build>
+	<finalName>livraria-pipoca</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

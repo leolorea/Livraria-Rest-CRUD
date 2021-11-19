@@ -21,7 +21,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 @Transactional
 class LivroControllerTest {
 
-	@Autowired
+	/*@Autowired
 	private MockMvc mvc;
 
 	@Test
@@ -40,5 +40,5 @@ class LivroControllerTest {
 				.andExpect(MockMvcResultMatchers.status().isCreated())
 				.andExpect(MockMvcResultMatchers.header().exists("Location"))
 				.andExpect(MockMvcResultMatchers.content().json(json));
-	}
+	}*/
 }

@@ -19,7 +19,7 @@ import br.com.alura.livrariaRest.repository.AutorRepository;
 @ExtendWith(MockitoExtension.class)
 class AutorServiceTest {
 
-	@Mock
+	/*@Mock
 	private AutorRepository repository;
 
 	ModelMapper modelMapper = new ModelMapper();
@@ -39,6 +39,6 @@ class AutorServiceTest {
 		assertEquals(autor.getDataNascimento(), dto.getDataNascimento());
 		assertEquals(autor.getEmail(), dto.getEmail());
 
-	}
+	}*/
 
 }
