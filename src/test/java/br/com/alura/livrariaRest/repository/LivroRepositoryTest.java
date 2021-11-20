@@ -31,7 +31,7 @@ class LivroRepositoryTest {
 	@Autowired
 	private TestEntityManager entityManager;
 
-	@Test
+	/*@Test
 	void deveriaCadastrarAutorComDadosCompletos() {
 
 		Autor autor = new Autor("Matheus", "matheus@gmail.com", LocalDate.of(2000, 12, 12), "autor muito conhecido");
@@ -51,6 +51,6 @@ class LivroRepositoryTest {
 						Assertions.tuple("rogerio", LocalDate.now(), new BigDecimal("390"), autor),
 						Assertions.tuple("matheus", LocalDate.now(), new BigDecimal("390"), autor));
 
-	}
+	}*/
 
 }
