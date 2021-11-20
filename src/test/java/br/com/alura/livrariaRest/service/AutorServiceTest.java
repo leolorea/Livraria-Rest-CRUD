@@ -1,22 +1,13 @@
 package br.com.alura.livrariaRest.service;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.time.LocalDate;
-
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.modelmapper.ModelMapper;
-
-import br.com.alura.livrariaRest.dto.AutorDto;
-import br.com.alura.livrariaRest.dto.AutorFormDto;
-import br.com.alura.livrariaRest.repository.AutorRepository;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 @ExtendWith(MockitoExtension.class)
+@ActiveProfiles("test")
+@SpringBootTest
 class AutorServiceTest {
 
 	/*@Mock
