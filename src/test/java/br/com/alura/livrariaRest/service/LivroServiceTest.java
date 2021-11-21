@@ -92,7 +92,7 @@ class LivroServiceTest {
 	                "titulolivro",
 	                LocalDate.now(),
 	                new BigDecimal("150"),
-	                1l
+	                1l, null
 	        );
 	    }
 

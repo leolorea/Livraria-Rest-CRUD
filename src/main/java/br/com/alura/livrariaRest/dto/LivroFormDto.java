@@ -3,6 +3,7 @@ package br.com.alura.livrariaRest.dto;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -13,6 +14,7 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import br.com.alura.livrariaRest.model.Autor;
 import lombok.AllArgsConstructor;
@@ -39,6 +41,9 @@ public class LivroFormDto {
 	private BigDecimal numeroPaginas;
 
 	@JsonAlias("autor_id")
+	@JsonIgnore
     private Long autorId;
+	
+	private Autor autor;
 
 }
