@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import br.com.alura.livrariaRest.dto.AtualizacaoUsuarioFormDto;
 import br.com.alura.livrariaRest.dto.UsuarioDto;
 import br.com.alura.livrariaRest.dto.UsuarioFormDto;
+import br.com.alura.livrariaRest.infra.EnviadorDeEmail;
 import br.com.alura.livrariaRest.model.Perfil;
 import br.com.alura.livrariaRest.model.Usuario;
 import br.com.alura.livrariaRest.repository.PerfilRepository;
@@ -34,6 +35,9 @@ public class UsuarioService {
 	
 	@Autowired
 	private PerfilRepository perfilRepository;
+	
+	@Autowired
+	private EnviadorDeEmail enviadorDeEmail;
 	
 	private ModelMapper mapper = new ModelMapper();
 
@@ -62,6 +66,15 @@ public class UsuarioService {
 			Perfil perfil = perfilRepository.getById(usuarioFormDto.getPerfilId());
 			usuario.adicionarPerfil(perfil);
 			Usuario usuarioSalvado = repository.save(usuario);
+			
+			String destinatario = usuario.getEmail();			 
+			String assunto = "Bem vindo a Livraria Pipoca!";
+			String mensagem = String.format("Olá %s!\n\n Aqui estão seus dados de acesso ao sistema Livraria:" +
+                    "\nLogin:%s\nSenha:%s",
+            usuario.getNome() ,usuario.getUsername(), key);
+			
+			enviadorDeEmail.enviarEmail(destinatario, assunto, mensagem);
+			
 			UsuarioDto dto = mapper.map(usuarioSalvado, UsuarioDto.class);
 			return dto;
 
