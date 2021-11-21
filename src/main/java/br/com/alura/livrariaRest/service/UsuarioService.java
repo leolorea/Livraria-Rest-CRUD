@@ -102,7 +102,7 @@ public class UsuarioService {
 
 		Usuario usuario = repository.getById(formDto.getId());
 		usuario.setSenha(formDto.getSenha());
-		usuario.setUsername(formDto.getUsername());
+		usuario.setLogin(formDto.getLogin());
 		UsuarioDto dto = mapper.map(usuario, UsuarioDto.class);
 		return dto;
 	}

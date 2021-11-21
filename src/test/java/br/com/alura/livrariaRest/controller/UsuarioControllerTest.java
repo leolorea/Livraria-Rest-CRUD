@@ -31,7 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @Transactional
 class UsuarioControllerTest {
 
-  /*  @Autowired
+   @Autowired
     private MockMvc mvc;
 
     @Autowired
@@ -47,7 +47,7 @@ class UsuarioControllerTest {
 
     @BeforeEach
     public void gerarToken(){
-        Usuario logado = new Usuario("leo","123");
+        Usuario logado = new Usuario("leolgomes","123", "leo");
         Perfil admin = perfilRepository.findById(1l).get();
         logado.adicionarPerfil(admin);
         usuarioRepository.save(logado);
@@ -62,7 +62,7 @@ class UsuarioControllerTest {
 
         mvc
                 .perform(
-                        post("/usuarios")
+                        post("/usuario")
                         .contentType(MediaType.APPLICATION_JSON)
                                 .content(json)
                                 .header("Authorization", "Bearer " + token))
@@ -71,14 +71,17 @@ class UsuarioControllerTest {
 
     }
 
+   
     @Test
     void deveriaCadastrarUsuarioComDadosCompletos() throws Exception {
-        String json = "{\"nome\":\"fulano\",\"login\":\"fulano@gmail.com\",\"perfilId\":1}";
-        String jsonEsperado = "{\"nome\":\"fulano\",\"login\":\"fulano@gmail.com\"}";
+        String json = "{\"nome\":\"leonardo\",\"login\":\"leolgomes\", \"email\":\"leolgomes@gmail.com\", \"senha\":\"123456\", \"perfilId\":1}";
+        String jsonEsperado = "{\"nome\":\"leonardo\",\"email\":\"leolgomes@gmail.com\"}";
 
+        
+       
         mvc
                 .perform(
-                        post("/usuarios")
+                        post("/usuario")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(json)
                                 .header("Authorization", "Bearer " + token))
@@ -87,6 +90,6 @@ class UsuarioControllerTest {
                 .andExpect(header().exists("Location"))
                 .andExpect(content().json(jsonEsperado));
 
-    }*/
+    }
 
 }

@@ -12,18 +12,18 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Service
 public class TokenService {
 	
-	@Value("${jjwt.secret}")
-	private String secret;
+    @Value("${jjwt.secret}")
+    private String secret;
 
 	public static String gerarToken(Authentication authentication) {
 		
 		Usuario logado = (Usuario) authentication.getPrincipal();
 		
-		return Jwts
-				.builder()
-				.setSubject(logado.getId().toString())
-				.signWith(SignatureAlgorithm.HS256,"8gzsbrpGK4AdPFamQkfdhym4bLLzMv7dXAxQXVdRmLrpQs9HX8yt4LmkY5nvYHVngZnFbVpZ5hWbxmMfXGZUZ3zdAYf7DrtEcwJmXcyuBKjbBabG9qsKYdXWJdXaYWDGJpE9Jj49HZpERzL2FE2j9nbq3vcmZ4xNr4jyUEMexT2ymx93MsYuv8W5FmQNPykEdU3Y58LMwSGcG6ve2FS8bttYSWAtX7PXLxuaH6d9g2VK3SSSWjXR3zfQQn5yySZ5")
-				.compact();
+		  return Jwts
+	                .builder()
+	                .setSubject(logado.getId().toString())
+	                .signWith(SignatureAlgorithm.HS256, "8gzsbrpGK4AdPFamQkfdhym4bLLzMv7dXAxQXVdRmLrpQs9HX8yt4LmkY5nvYHVngZnFbVpZ5hWbxmMfXGZUZ3zdAYf7DrtEcwJmXcyuBKjbBabG9qsKYdXWJdXaYWDGJpE9Jj49HZpERzL2FE2j9nbq3vcmZ4xNr4jyUEMexT2ymx93MsYuv8W5FmQNPykEdU3Y58LMwSGcG6ve2FS8bttYSWAtX7PXLxuaH6d9g2VK3SSSWjXR3zfQQn5yySZ5")
+	                .compact();
 	}
 	public boolean isValid(String token) {
 		

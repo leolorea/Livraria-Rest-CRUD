@@ -1,5 +1,6 @@
 package br.com.alura.livrariaRest.infra;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,6 +14,11 @@ public class BeansConfiguration {
 		return new BCryptPasswordEncoder();
 
 	}
+	
+	  @Bean
+	    public ModelMapper getModelMapper() {
+	        return new ModelMapper();
+	    }
 	
 
 }

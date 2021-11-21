@@ -24,9 +24,9 @@ public class AutenticacaoService implements UserDetailsService {
 	private TokenService tokenService;
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 
-		return repository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(""));
+		return repository.findByLogin(login).orElseThrow(() -> new UsernameNotFoundException(""));
 	}
 
 	public String autenticar(LoginFormDto dto) {

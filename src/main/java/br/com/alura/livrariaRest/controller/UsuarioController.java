@@ -1,5 +1,7 @@
 package br.com.alura.livrariaRest.controller;
 
+import java.net.URI;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.alura.livrariaRest.dto.AtualizacaoUsuarioFormDto;
 import br.com.alura.livrariaRest.dto.UsuarioDto;
@@ -42,9 +45,11 @@ public class UsuarioController {
 	}
 
 	@PostMapping("/usuario")
-	public ResponseEntity<UsuarioDto> cadastarUsuario(@RequestBody @Valid UsuarioFormDto formDto) {
+	public ResponseEntity<UsuarioDto> cadastarUsuario(@RequestBody @Valid UsuarioFormDto formDto, UriComponentsBuilder uriBuilder) {
 		UsuarioDto dto = service.cadastrarUsuario(formDto);
-		return ResponseEntity.ok(dto);
+		URI uri = uriBuilder.path("/usuario/{id}").buildAndExpand(dto.getId()).toUri();
+		
+		return ResponseEntity.created(uri).body(dto);
 	}
 	
 	@DeleteMapping("/usuario/{id}")

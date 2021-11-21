@@ -33,7 +33,7 @@ public class Usuario implements UserDetails{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
 	private Long id;
-	private String username;
+	private String login;
 	private String senha;
 	private String email;
 	private String nome;
@@ -59,11 +59,7 @@ public class Usuario implements UserDetails{
 		return senha;
 	}
 
-	@Override
-	public String getUsername() {
 	
-		return username;
-	}
 
 	@Override
 	public boolean isAccountNonExpired() {
@@ -94,15 +90,22 @@ public class Usuario implements UserDetails{
 		
 	}
 
-	public Usuario(String username, String senha) {
+	public Usuario(String login, String senha, String nome) {
 		this.senha = senha;
-		this.username = username;
+		this.login = login;
+		this.nome = nome;
 	}
 
-	public void atualizarInfo(String username, String senha) {
+	public void atualizarInfo(String login, String senha, String nome) {
 		this.senha = senha;
-		this.username = username;
+		this.login = login;
+		this.nome = nome;
 		
+	}
+
+	@Override
+	public String getUsername() {
+		return login;
 	}
 
 	

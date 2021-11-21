@@ -10,7 +10,7 @@ import br.com.alura.livrariaRest.model.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 
-	Optional<Usuario> findByUsername(String username);
+	Optional<Usuario> findByLogin(String login);
 
 	
 	 @Query("select u from Usuario u join fetch u.perfis where u.id = :id")
